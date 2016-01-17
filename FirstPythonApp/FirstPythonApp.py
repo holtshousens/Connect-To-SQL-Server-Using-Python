@@ -1,6 +1,7 @@
 import pypyodbc 
 
 # Read config parameters
+
 from xml.dom import minidom
 xmldoc = minidom.parse('./config.xml')
 configdriver = xmldoc.getElementsByTagName('driver')
