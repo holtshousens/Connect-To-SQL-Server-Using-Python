@@ -14,22 +14,27 @@ configdatabase = xmldoc.getElementsByTagName('database')
 database = configdatabase[0].attributes['name'].value
 
 # connect to sql server
+def connectToDB():
+    try:
+        connection = pypyodbc.connect('Driver=' + driver + 'Server=' + server + 'Database=' + database) 
+    except ProgrammingError as error:
+        print("Programming Error: ", error)
+    else:
+        cursor = connection.cursor() 
 
-try:
-    connection = pypyodbc.connect('Driver=' + driver + 'Server=' + server + 'Database=' + database) 
-except ProgrammingError as error:
-    print("Programming Error: ", error)
-else:
-    cursor = connection.cursor() 
-
-    # execute a script
-    SQLCommand = ("SELECT Name FROM dbo.Merchants") 
+# return top 100 rows
+def returnTop100(schemaname, tablename):
+    connectToDB()
+    SQLCommand = ("SELECT TOP 100 * FROM " + schemaname + "." + tablename) 
     cursor.execute(SQLCommand) 
-
     #fetch results and display to console
     results = cursor.fetchone() 
     while results:
          print(str(results[0]))
          results = cursor.fetchone() 
+    disconnectFromDB()
 
+
+# disconnect from sql server
+def disconnectFromDB():
     connection.close()
