@@ -11,22 +11,24 @@ class ConnectToDB:
 
     @staticmethod
     def connectionstring():
-        xmldoc = minidom.parse('./config.xml')
-        configdriver = xmldoc.getElementsByTagName('driver')
-        driver = configdriver[0].attributes['name'].value
-        configserver = xmldoc.getElementsByTagName('server')
-        server = configserver[0].attributes['name'].value
-        configdatabase = xmldoc.getElementsByTagName('database')
-        database = configdatabase[0].attributes['name'].value
+        xmldoc = minidom.parse("./config.xml")
+        configdriver = xmldoc.getElementsByTagName("driver")
+        driver = configdriver[0].attributes["name"].value
+        configserver = xmldoc.getElementsByTagName("server")
+        server = configserver[0].attributes["name"].value
+        configdatabase = xmldoc.getElementsByTagName("database")
+        database = configdatabase[0].attributes["name"].value
         return driver, server, database
 
     # connect to sql server
     @staticmethod
     def connect(driver, server, database):
         try:
-            connection = pyodbc.connect('Driver=' + driver + 'Server=' + server + 'Database=' + database)
-        except ProgrammingError as error:
-            print("Programming Error: ", error)
+            connection = pyodbc.connect("Driver=" + driver + "Server=" + server + "Database=" + database)
+        except ProgrammingError as error1:
+            print("Programming error occurred: ", error1)
+        except pyodbc.Error as error2:
+            print("Unable to connect to server: ", error2)
         else:
             cursor = connection.cursor()
             print("*** Connection to " + server + " Established ***")
@@ -49,4 +51,4 @@ class ConnectToDB:
     @staticmethod
     def disconnect(connection):
         connection.close()
-        print('*** Disconnection made ***')
+        print("*** Disconnection made ***")
