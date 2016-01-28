@@ -1,9 +1,9 @@
-import pypyodbc 
+import pyodbc 
 
 # Read config parameters
 
 from xml.dom import minidom
-from pypyodbc import ProgrammingError
+from pyodbc import ProgrammingError
 
 def extractConnectionString():
     xmldoc = minidom.parse('./config.xml')
