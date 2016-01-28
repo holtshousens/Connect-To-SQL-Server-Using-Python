@@ -4,13 +4,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e27505e2-5eca-4a82-ac33-0fbb57d0d802</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>FirstPythonApp.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>ConnectToDB.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>FirstPythonApp</Name>
+    <Name>ConnectToDB</Name>
     <RootNamespace>FirstPythonApp</RootNamespace>
     <InterpreterId>{678614b2-9d68-40a6-8701-c1516ecab0ff}</InterpreterId>
     <InterpreterVersion>3.4</InterpreterVersion>
@@ -24,7 +25,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FirstPythonApp.py" />
+    <Compile Include="ConnectToDB.py" />
+    <Compile Include="TestConnectToDB.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

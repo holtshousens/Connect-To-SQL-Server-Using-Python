@@ -50,9 +50,3 @@ class ConnectToDB:
     def disconnect(connection):
         connection.close()
         print('*** Disconnection made ***')
-
-# How to use the class methods
-myDriver, myServer, myDatabase = ConnectToDB.connectionstring()
-myCursor, myConnection = ConnectToDB.connect(driver=myDriver, server=myServer, database=myDatabase)
-ConnectToDB.getsample(cursor=myCursor, schemaname="dbo", tablename="Merchants", fieldname="Name")
-ConnectToDB.disconnect(connection=myConnection)
